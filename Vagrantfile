@@ -12,7 +12,6 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-#  config.vm.box = "mauricepacker"
   config.vm.box = "Centos1"
   config.vm.provider "virtualbox" do |v|
     v.gui = false
@@ -22,9 +21,9 @@ end
 config.vm.define "app2" do | app_config |
  app_config.vm.host_name = "app2"
  app_config.vm.network :private_network, ip: "192.168.56.36" 
-# app_config.vm.provision :ansible do |ansible|
-#        ansible.inventory_path = "/Users/mauricesheehan/Testing"
-#	ansible.playbook = "common.yaml"
-# end
+ app_config.vm.provision :ansible do |ansible|
+#        ansible.inventory_path = "/Users/msheehan/Testing"
+	ansible.playbook = "/Users/msheehan/Testing/common.yaml"
+ end
 end
 end
